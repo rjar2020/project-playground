@@ -14,7 +14,7 @@ public final class StringMatcher {
         return resultMap.entrySet()
                 .stream().filter(entry -> entry.getValue() == 1 )
                 .findFirst().map(Map.Entry::getKey)
-                .orElse("");
+                .orElse(null);
     }
 
     public static Boolean isAnagram(String left, String right) {
