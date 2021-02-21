@@ -18,7 +18,7 @@ public class OddElementFinderShould {
                 new int[]{1, 3, 1}, 3,
                 new int[]{1, 1_000_000_001, 1}, 0,
                 randomArrayGenerator(1_000_002, new int[]{9, 3}, 7), 0,
-                randomArrayGenerator(999_999, new int[]{8, 4}, 12), 12
+                randomArrayGenerator(999_999, new int[]{8, 4}, 13), 13
         );
         mapResult.forEach((input, result) -> assertEquals(result, OddElementFinder.solution(input)));
     }
