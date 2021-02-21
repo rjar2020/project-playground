@@ -1,7 +1,5 @@
 package com.playground.codility;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,6 +8,18 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class OddElementFinder {
+
+    public static int bestSolution(int[] ar) {
+        if (isInvalidInput(ar)) {
+            return 0;
+        }
+        int res = 0;
+        for (int j : ar) {
+            res = res ^ j;
+        }
+        return res;
+    }
+
     public static int solution(int[] input) {
         if (isInvalidInput(input)) {
             return 0;
@@ -27,27 +37,15 @@ public class OddElementFinder {
     }
 
     private static LinkedHashMap<Integer, Integer> getElementsCount(int[] input) {
-        var result = Arrays.stream(input)
+        return Arrays.stream(input)
                 .boxed()
                 .collect(Collectors.toMap(
                         Function.identity(),
                         value -> 1,
                         Integer::sum,
                         LinkedHashMap::new));
-        return result;
     }
 
-    public static int bestSolution(int[] ar) {
-        if (isInvalidInput(ar)) {
-            return 0;
-        }
-        int i;
-        int res = 0;
-        for (i = 0; i < ar.length; i++) {
-            res = res ^ ar[i];
-        }
-        return res;
-    }
 
     private static boolean isInvalidInput(int[] ar) {
         return Objects.isNull(ar)
