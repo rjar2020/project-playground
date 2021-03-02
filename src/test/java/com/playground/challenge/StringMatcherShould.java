@@ -17,7 +17,7 @@ class StringMatcherShould {
                 new TestScenario("BAC", "B"),
                 new TestScenario("BlohAtBloh", "A")
         );
-        mapResult.forEach((input) -> assertEquals(input.right, StringMatcher.findFirstNonRepeatedMatch(input.left)));
+        mapResult.forEach((scenario) -> assertEquals(scenario.right, StringMatcher.findFirstNonRepeatedMatch(scenario.left)));
     }
 
     @Test
@@ -28,7 +28,7 @@ class StringMatcherShould {
                 new TestScenario("AAAB", "AAB"), false,
                 new TestScenario("AAAB", "AABC"), false
         );
-        mapResult.forEach((input, result) -> assertEquals(result, StringMatcher.isAnagram(input.getLeft(), input.getRight())));
+        mapResult.forEach((scenario, result) -> assertEquals(result, StringMatcher.isAnagram(scenario.getLeft(), scenario.getRight())));
     }
 
     private static class TestScenario {
