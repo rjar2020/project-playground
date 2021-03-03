@@ -7,12 +7,13 @@ import java.util.stream.Collectors;
 
 public final class StringMatcher {
 
-    private StringMatcher(){}
+    private StringMatcher() {
+    }
 
     public static String findFirstNonRepeatedMatch(String input) {
         var resultMap = getCharacterOccurrenceMap(input);
         return resultMap.entrySet()
-                .stream().filter(entry -> entry.getValue() == 1 )
+                .stream().filter(entry -> entry.getValue() == 1)
                 .findFirst().map(Map.Entry::getKey)
                 .orElse(null);
     }
@@ -24,13 +25,17 @@ public final class StringMatcher {
     }
 
     private static Map<String, Integer> getCharacterOccurrenceMap(String input) {
-        return input.chars()
+        /*var a = input.chars()
                 .mapToObj(c -> String.valueOf((char)c))
+                .collect(groupingBy(Function.identity(), summingInt(value -> 1)));*/
+        return input.chars()
+                .mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.toMap(
                         Function.identity(),
                         value -> 1,
                         Integer::sum,
                         LinkedHashMap::new));
+
     }
 
     //Committed versions :-(
